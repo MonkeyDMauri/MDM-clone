@@ -11,7 +11,8 @@
     <div class="main-wrapper">
         <div class="main-wrap">
             <h1>Sign In</h1>
-            <form action="">
+            <form action="{{route('user.signin')}}" method="POST">
+                @csrf
                 <div class="login-form">
                     <input type="text" placeholder="Username">
 
@@ -27,6 +28,11 @@
                 </div>
             </form>
         </div>
+        @if($errors->any())
+            @foreach ($errors->all() as $error)
+                <p>{{$error}}</p>
+            @endforeach
+        @endif
     </div>
 </body>
 </html>
