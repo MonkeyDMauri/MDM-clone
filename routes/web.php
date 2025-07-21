@@ -18,5 +18,7 @@ Route::get('/signin-page', function () {
 
 
 // This route triggers the sign in process.
-
 Route::post('/user-signin', [UserController::class, 'signIn'])->name('user.signin');
+
+// This route triggers the log in process.
+Route::post('/user-login', [UserController::class,'logIn'])->name('user.login');

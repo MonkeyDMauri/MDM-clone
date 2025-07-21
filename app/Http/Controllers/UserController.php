@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+// this facade is for using Auth
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -10,17 +16,36 @@ class UserController extends Controller
     public function signIn (Request $request) {
         // sign in code goes here
 
+        // validation rules.
         $input = $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
 
-        $input['passsword'] = Hash::make($input['passsword']);
+        // manually hashing password before creating new user account.
+        $input['passsword'] = Hash::make($input['password']);
 
+        // Creating new user account using the User model.
         $user = User::create($input);
 
+        // returning user back to sign in page with a success message.
+        return back()->with('message', 'your account has been created');
+    }
 
-        return 'hello MF';
+
+    // Code for Log In.
+    public function logIn(Request $request) {
+        $input = $request->validate([
+            'name'=> 'required',
+            'password'=> 'required'
+        ]);        
+
+        if (Auth::attempt($input)) {
+            // return view('home.home');
+            return var_dump($input);
+        }
+
+        return back()->withErrors('check your username or password');
     }
 }

@@ -14,11 +14,11 @@
             <form action="{{route('user.signin')}}" method="POST">
                 @csrf
                 <div class="login-form">
-                    <input type="text" placeholder="Username">
+                    <input type="text" placeholder="Username" name="name" required>
 
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" name="email" required>
 
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password" required>
 
                     <button class="signin-btn">Sign In</button>
 
@@ -32,6 +32,9 @@
             @foreach ($errors->all() as $error)
                 <p>{{$error}}</p>
             @endforeach
+        @endif
+        @if (session('message'))
+            <h1>{{session('message')}}</h1>
         @endif
     </div>
 </body>
