@@ -23,7 +23,7 @@
                         <a href="{{route('signin.page')}}">Don't have an account?</a>
                     </p>
                     <p>
-                        <a href="{{route('password.create')}}">Forgot password?</a>
+                        <a href="{{route('password.request')}}">Forgot password?</a>
                     </p>
                 </div>
             </form>

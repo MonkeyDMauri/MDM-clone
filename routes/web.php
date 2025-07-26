@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ForgotPasswordController;
 
 // SIGNIN LOGIN ROUTES
 
@@ -22,3 +23,9 @@ Route::post('/user-signin', [UserController::class, 'signIn'])->name('user.signi
 
 // This route triggers the log in process.
 Route::post('/user-login', [UserController::class,'logIn'])->name('user.login');
+
+//PASSWORD RESET ALGORITHM
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
+
+Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
