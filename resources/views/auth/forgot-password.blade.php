@@ -17,8 +17,11 @@
                 <br>
                 <input type="email" required placeholder="email" id="email" name="email">
                 <br>
-                <button>Request <Link></Link></button>
+                <button>Request Link</button>
             </form>
+            @if(session('success'))
+                <h1>{{session('success')}}</h1>
+            @endif
         </div>
     </div>
 </body>
