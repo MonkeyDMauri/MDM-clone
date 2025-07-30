@@ -7,6 +7,24 @@
     <title>Reset Password</title>
 </head>
 <body>
-    reset form goes here
+    <div class="reset-password-form-wrapper">
+        <div class="reset-password-form-wrap">
+            <h1>Reset Password</h1>
+            <div class="reset-password-form">
+                <form action="">
+                    <input type="text" name="email" placeholder="Enter email" required>
+                    <br>
+                    <input type="password" name="password" 
+                    placeholder="New Password"
+                    required>
+                    <br>
+                    <input type="password" required
+                    placeholder="Confirm Password">
+                    <br>
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

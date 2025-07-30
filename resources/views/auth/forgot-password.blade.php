@@ -22,6 +22,10 @@
             @if(session('success'))
                 <h1>{{session('success')}}</h1>
             @endif
+
+            @error('email')
+                <h1>{{ $message }}</h1>
+            @enderror
         </div>
     </div>
 </body>
