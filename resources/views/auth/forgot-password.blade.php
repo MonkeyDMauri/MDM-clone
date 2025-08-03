@@ -7,7 +7,7 @@
     <title>Document</title>
     @vite('resources/js/app.js')
 </head>
-<body>
+<body class="forgot-password-page">
     <div class="reset-password-email-form-wrapper">
         <h1>Reset your password - Request reset password link</h1>
         <div class="reset-password-email-form-wrap">
@@ -19,6 +19,7 @@
                 <br>
                 <button>Request Link</button>
             </form>
+            <a href="{{route('login.page')}}">Cancel request</a>
             @if(session('success'))
                 <h1>{{session('success')}}</h1>
             @endif

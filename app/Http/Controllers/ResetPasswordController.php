@@ -27,7 +27,9 @@ class ResetPasswordController extends Controller
             function (User $user, $password) {
                 $user->forceFill([
                     'password' => Hash::make($password)
-                ])->$user->save();
+                ]);
+                
+                $user->save();
         });
 
         return $status == Password::PASSWORD_RESET ? back()->with('success', __($status)) : back()->with('error', __($status));
