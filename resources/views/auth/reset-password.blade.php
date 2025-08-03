@@ -11,7 +11,9 @@
         <div class="reset-password-form-wrap">
             <h1>Reset Password</h1>
             <div class="reset-password-form">
-                <form action="">
+                <form action="{{route('password.update')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="token" value="{{$token}}">
                     <input type="text" name="email" placeholder="Enter email" required>
                     <br>
                     <input type="password" name="password" 
@@ -19,10 +21,16 @@
                     required>
                     <br>
                     <input type="password" required
-                    placeholder="Confirm Password">
+                    placeholder="Confirm Password" name="password_confirmation">
                     <br>
                     <button>Submit</button>
                 </form>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                    
+                @endif
             </div>
         </div>
     </div>
