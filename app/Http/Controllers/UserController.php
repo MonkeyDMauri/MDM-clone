@@ -41,9 +41,8 @@ class UserController extends Controller
             'password'=> 'required'
         ]);        
 
-        if (Auth::attempt($input)) {
-            // return view('home.home');
-            return var_dump($input);
+        if (Auth::attempt( ['name' =>$input['name'], 'password' => $input['password']])) {
+            return view('home.home');
         }
 
         return back()->withErrors('check your username or password');

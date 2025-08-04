@@ -11,3 +11,7 @@ if (_('body.login-page')) {
 if (_('body.forgot-password-page')) {
     import('../css/forgot-password-styling/fp.css');
 }
+
+if (_('body.home-page')) {
+    import('../css/home-styling/home.css');
+}

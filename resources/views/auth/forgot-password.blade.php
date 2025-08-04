@@ -11,15 +11,19 @@
     <div class="reset-password-email-form-wrapper">
         <h1>Reset your password - Request reset password link</h1>
         <div class="reset-password-email-form-wrap">
+            
             <form action="{{route('password.email')}}" method="POST">
                 @csrf
                 <label for="email">Enter email</label>
                 <br>
                 <input type="email" required placeholder="email" id="email" name="email">
                 <br>
-                <button>Request Link</button>
+                <div class="btn-cont">
+                    <button>Request Link</button>
+                    <a href="{{route('login.page')}}" class="cancel-request-btn">Cancel request</a>
+                </div>
             </form>
-            <a href="{{route('login.page')}}">Cancel request</a>
+
             @if(session('success'))
                 <h1>{{session('success')}}</h1>
             @endif
