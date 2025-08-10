@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ResetPasswordController;
 
 // SIGNIN LOGIN ROUTES
@@ -34,3 +35,10 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->nam
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'create'])->name('password.reset');
 
 Route::post('/reset-password', [ResetPasswordController::class,'store'])->name('password.update');
+
+// =============
+// HOME ROUTES
+// ==============
+
+// This request will come from a JS fetch request to get all posts.
+Route::get('/get-posts', [PostController::class, 'getPosts'])->name('post.get');

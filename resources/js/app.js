@@ -14,4 +14,5 @@ if (_('body.forgot-password-page')) {
 
 if (_('body.home-page')) {
     import('../css/home-styling/home.css');
+    import('./home_js_files/home.js');
 }
