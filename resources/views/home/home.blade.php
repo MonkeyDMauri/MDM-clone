@@ -8,19 +8,29 @@
     @vite('resources/js/app.js')
 </head>
 <body class="home-page">
-    <nav class="nav-bar">
-        <div class="nav-name-email">
-            <h1 class="nav-name">{{auth()->user()->name}}</h1>
-            {{-- <br> --}}
-            <p class="nav-email">{{auth()->user()->email}}</p>
-        </div>
 
-        <ul class="nav-options">
-            <li><a href="#">Option</a></li>
-            <li><a href="#">Option</a></li>
-            <li><a href="#settings">Settings</a></li>
-            <li class="logout-btn">Logout</li>
-        </ul>
-    </nav>
+    <div class="body-main">
+        <nav class="nav-bar">
+
+            <div class="nav-section-1">
+                <img src="{{ asset('images/elden_ring_logo2.png')}}" alt="elden ring logo"
+                class="elden-ring-logo">
+                <div class="nav-name-email">
+                    <h1 class="nav-name">{{auth()->user()->name}}</h1>
+                    {{-- <br> --}}
+                    <p class="nav-email">{{auth()->user()->email}}</p>
+                </div>
+            </div>
+            
+
+            <ul class="nav-options">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li class="logout-btn">Logout</li>
+            </ul>
+        </nav>
+    </div>
+    
 </body>
 </html>
