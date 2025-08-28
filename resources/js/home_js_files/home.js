@@ -4,6 +4,9 @@ function _(element) {
     return document.querySelector(element);
 }
 
+let currentSection = 'home';
+
+
 
 // CODE TO GET POSTS AND THEN DISPLAY THEM
 

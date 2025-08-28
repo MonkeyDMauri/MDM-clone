@@ -40,5 +40,16 @@ Route::post('/reset-password', [ResetPasswordController::class,'store'])->name('
 // HOME ROUTES
 // ==============
 
+// Go to home page
+Route::get('/home-section', function () {
+    return view('home.home');
+})->name('home.section');
+
+// Go to people page.
+Route::get('/people-section', function () {
+    return view('home.people');
+})->name('people.section');
+
+
 // This request will come from a JS fetch request to get all posts.
 Route::get('/get-posts', [PostController::class, 'getPosts'])->name('post.get');

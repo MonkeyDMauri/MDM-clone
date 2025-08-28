@@ -1,6 +1,5 @@
 @extends('home.home-layout')
 
-
 @section('content')
-<h1>Home page</h1>
+<h2>peiple</h2>
 @endsection
