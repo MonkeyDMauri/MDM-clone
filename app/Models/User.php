@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'gender',
+        'profile_pic_path'
     ];
 
     /**
@@ -45,5 +47,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Function to get the year, month and day from the created_at value of this user.
+    public function created_at_date() {
+        return $this->created_at->format('m/d/Y');
+    }
+
+    // relationship with posts (using pivot table)
+    public function posts() {
+        return $this->belongsToMany(Post::class);
     }
 }

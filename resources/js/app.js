@@ -14,5 +14,10 @@ if (_('body.forgot-password-page')) {
 
 if (_('body.home-page')) {
     import('../css/home-styling/home.css');
-    import('./home_js_files/home.js');
+    // import('./home_js_files/home.js');
+}
+
+if (_('.profile-card-wrapper')) {
+    import('../css/home-styling/profile.css');
+    import('../js/home_js_files/profile.js');
 }

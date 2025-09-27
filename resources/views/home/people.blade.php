@@ -1,5 +1,6 @@
 @extends('home.home-layout')
 
 @section('content')
-<h2>peiple</h2>
+<h1>Search</h1>
+<input type="text">
 @endsection

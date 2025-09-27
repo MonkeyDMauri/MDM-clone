@@ -9,7 +9,7 @@ body {
 .body-main {
     margin: 0;
     width: 1200px;
-    min-height: 100vh;
+    height: 100%;
     background-color: black;
 }
 
@@ -26,7 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
-    background-color: rgb(38, 38, 182);
+    background-color: black;
 }
 
 .nav-section-1 {
@@ -55,3 +55,63 @@ body {
     color: white;
     text-decoration: none;
 }
+
+/* LOGOUT POPUP STYLE */
+
+.logout-popup-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.6);
+}
+
+.logout-popup-wrapper.show {
+    display: flex;
+}
+
+.logout-popup-wrap {
+    background-color: black;
+    padding: 1rem;
+    border: solid 2px white;
+    border-radius: .5rem;
+}
+
+
+.logout-options-wrapper {
+    display: flex;
+
+    justify-content: space-around;
+}
+
+.logout-popup-wrap {
+    text-align: center;
+    font-size: 2rem;
+    width: 200px;
+}
+
+.logout-opt {
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.8rem;
+
+    transition: all ease-in-out 500ms;
+}
+
+.logout-opt:hover {
+    border-bottom: solid 1px white;
+}
+
+
+
+

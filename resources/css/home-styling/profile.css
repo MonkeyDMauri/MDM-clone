@@ -1,0 +1,89 @@
+
+
+.profile-card-wrapper {
+    /* background-color: blue; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.default-banner-image {
+    width: 100%;
+    height: 180px;
+}
+
+
+
+.profile-pic-container {
+    border-radius: 50%;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+}
+
+.default-male-profile-pic, .default-female-profile-pic {
+    border-radius: 50%;
+    width: 230px;
+    height: 230px
+}
+
+/* Profile card information */
+.profile-card-information {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+    /* padding: 1rem; */
+}
+
+
+.edit-profile-btn {
+    float: right;
+    padding: .5rem 1.2rem;
+    margin: 1rem;
+    cursor: pointer;
+
+    background-color: black;
+    outline: white 1.5px solid;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+
+}
+
+.edit-profile-btn:hover {
+    background-color: rgb(49, 49, 49);
+}
+
+.user-basic-info-wrapper {
+    margin-top: 3.5rem;
+    padding-left: 3rem;
+}
+
+.user-username {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.user-email {
+    font-size: 1.5rem;
+}
+
+.user-bio {
+    margin: 1.5rem 0;
+}
+
+.join-date {
+    font-size: rgb(78, 78, 78);
+}
+
+.little-calendar-icon {
+    height: 40px;
+}
+
+/* Posts section */
+
+.posts-section {
+    padding: 1rem;
+}

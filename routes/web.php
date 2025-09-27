@@ -50,6 +50,20 @@ Route::get('/people-section', function () {
     return view('home.people');
 })->name('people.section');
 
+Route::get('/profile-section', function () {
+    return view('home.profile-page');
+})->name('profile.section');
 
 // This request will come from a JS fetch request to get all posts.
 Route::get('/get-posts', [PostController::class, 'getPosts'])->name('post.get');
+
+// Route to trigger logout.
+Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');;
+
+
+// ========================
+// PROFILE SECTION ROUTES =
+// ========================
+
+// This route is called by JS fetch request to get all posts that the current user has created.
+Route::get('/get-my-posts', [UserController::class, 'getPosts']);

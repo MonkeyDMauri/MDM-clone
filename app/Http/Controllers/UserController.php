@@ -19,12 +19,20 @@ class UserController extends Controller
         // validation rules.
         $input = $request->validate([
             'name' => 'required|min:3',
+            'gender' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
 
         // manually hashing password before creating new user account.
         $input['passsword'] = Hash::make($input['password']);
+    
+        // setting right default image depending on new user's selected gender.
+        if ($request->gender === 'male') {
+            $input['profile_pic_path'] = 'male-pic.jpg';
+        } else {
+            $input['profile_pic_path'] = 'female-pic.jpeg';
+        }
 
         // Creating new user account using the User model.
         $user = User::create($input);
@@ -47,4 +55,36 @@ class UserController extends Controller
 
         return back()->withErrors('check your username or password');
     }
+
+    // Function to logout user and invalidate current session.
+    public function logout(Request $request) {
+        auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        return redirect('/');
+    }
+
+
+    
+    //Get all posts current user has created.
+    public function getPosts() {
+
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json([
+                'errorMessage' => 'no user logged in'
+            ]);
+        }
+
+        $posts = $user->posts;
+
+        return response()->json([
+            'success' => true,
+            'posts' => $posts
+        ]);
+    }
 }
+
+

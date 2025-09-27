@@ -13,7 +13,7 @@
         <nav class="nav-bar">
 
             <div class="nav-section-1">
-                <img src="{{ asset('images/elden_ring_logo2.png')}}" alt="elden ring logo"
+                <img src="{{ asset('images/default-images/elden_ring_logo2.png')}}" alt="elden ring logo"
                 class="elden-ring-logo">
                 <div class="nav-name-email">
                     <h1 class="nav-name">{{auth()->user()->name}}</h1>
@@ -26,16 +26,29 @@
             <ul class="nav-options">
                 <li><a href="{{route('home.section')}}">Home</a></li>
                 <li><a href="{{route('people.section')}}">People</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="{{route('profile.section')}}">Profile</a></li>
                 <li><a href="#settings">Settings</a></li>
-                <li class="logout-btn">Logout</li>
+                <li class="logout-btn" style="cursor: pointer;">Logout</li>
             </ul>
         </nav>
 
-        <div style="background-color:green; margin:0; padding: 0;">
-            {{-- Page content goes here --}}
-            @yield('content')
+        <div class="logout-popup-wrapper">
+            <div class="logout-popup-wrap">
+                Log out?
+                <div class="logout-options-wrapper">
+                    <form action="{{route('user.logout')}}" method="POST">
+                        @csrf
+                        <button class="logout-opt logout-opt-yes">Yes</button>
+                    </form>
+
+                    <button class="logout-opt logout-opt-no">No</button>
+                </div>
+            </div>
         </div>
+
+        {{-- Page content goes here --}}
+        @yield('content')
+        
     </div>
     
 </body>

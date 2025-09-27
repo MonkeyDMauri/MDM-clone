@@ -18,6 +18,12 @@
 
                     <input type="text" placeholder="Email" name="email" required>
 
+                    <select name="gender" id="gender">
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                    </select>
+
+
                     <input type="password" placeholder="Password" name="password" required>
 
                     <button class="signin-btn">Sign In</button>
