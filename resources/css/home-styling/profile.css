@@ -1,4 +1,8 @@
 
+.error {
+    color: red;
+}
+
 
 .profile-card-wrapper {
     /* background-color: blue; */
@@ -27,7 +31,66 @@
     height: 230px
 }
 
-/* Profile card information */
+/* 
+EDIT PROFILE POPUP STYLING 
+*/
+
+.edit-profile-popup-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgb(0, 0, 0, 0.6);
+
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+}
+
+.edit-profile-popup-wrap {
+    padding: 2rem;
+    background-color: black;
+    border: solid 1px white;
+    border-radius: .5rem;
+
+    width: 500px;
+}
+
+.edit-profile-form-input-container {
+    margin: 1rem 0
+}
+
+#edit-gender {
+    width: 200px;
+    font-size: 1.5rem;
+}
+
+.edit-profile-label {
+    font-size: 1.5rem
+}
+
+.edit-profile-form-save-btn {
+    background-color: white;
+    color: black;
+    border-radius: 1.5rem;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-profile-form-save-btn:hover {
+    background-color: black;
+    outline: solid 1px white;
+    color: white;
+}
+
+
+/* PROFILE CARD INFORMATION */
 .profile-card-information {
     background-color: black;
     display: flex;
@@ -82,8 +145,142 @@
     height: 40px;
 }
 
-/* Posts section */
+/* POST SECTION */
 
 .posts-section {
     padding: 1rem;
+}
+
+
+
+/* Post button/form style */
+.post-btn-wrapper {
+    padding: 1rem 4rem;
+}
+
+.post-btn {
+    background-color: white;
+    color: black;
+    border-radius: 1.5rem;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+}
+
+
+.post-btn:hover {
+    background-color: black;
+    outline: solid 1px white;
+    color: white;
+}
+
+.post-cancel-btn {
+    background-color: white;
+    color: black;
+    border-radius: 1.5rem;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+}
+
+.post-cancel-btn:hover {
+    background-color: black;
+    outline: solid 1px white;
+    color: white;
+}
+
+.post-form-popup-wrapper {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.6);
+
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.post-form-popup-wrapper.show {
+    display: flex;
+}
+
+.post-form-popup-wrap {
+    background-color: black;
+    color: white;
+    border: white solid 1px;
+    border-radius: 1rem;
+    width: 500px;
+
+    padding: 2rem;
+}
+
+.post-form label, input {
+    font-size: 1.3rem;
+}
+
+.post-form textarea {
+    font-size: 1rem;
+}
+
+.post-form-field {
+    margin: 1rem 0;
+}
+
+#desc {
+    resize: none;
+    width: 200px;
+    height: 80px;
+}
+
+/*POST SECTION STYLING*/
+.posts-section {
+    border-top: solid 1px white;
+    padding: 0 12rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card {
+    padding: 1rem;
+    border: solid 1px white;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.post-username {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+.post-username {
+    font-size: 200;
+    font-size: 1.5rem;
+}
+
+.post-title {
+    font-size: 2rem;
+}
+
+.post-description {
+    padding: 1rem;
+}
+
+.like-btn-img, .dislike-btn-img, .share-btn-img {
+    border-radius: 50%;
+    height: 40px;
+    cursor: pointer;
 }

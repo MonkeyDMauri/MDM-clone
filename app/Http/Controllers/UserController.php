@@ -67,7 +67,7 @@ class UserController extends Controller
 
 
     
-    //Get all posts current user has created.
+    // This function gets all posts current user has created only (not all posts).
     public function getPosts() {
 
         $user = Auth::user();
