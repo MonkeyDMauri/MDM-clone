@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 // this facade is for using Auth
 use Illuminate\Support\Facades\Auth;
@@ -84,6 +85,32 @@ class UserController extends Controller
             'success' => true,
             'posts' => $posts
         ]);
+    }
+
+    public function editProfile(Request $request) {
+        $input = Validator::make( $request->all(), [
+            'name' => 'required|string|min:3',
+            'email' => 'required|email',
+            'gender' => 'required'
+        ],[
+            'name.min' => 'not long enough bro',
+            'email.email' => 'you gotta use email format bro'
+        ]);
+
+        if ($input->fails()) {
+            return back()->withErrors($input, 'editProfileErrors')->withInput();
+        }
+
+        $currentUser = auth()->user();
+
+        $currentUser->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'gender' => $request->gender
+        ]);
+
+        return back()->with('success', 'changes were saved');
+
     }
 }
 

@@ -36,7 +36,7 @@ EDIT PROFILE POPUP STYLING
 */
 
 .edit-profile-popup-wrapper {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -49,6 +49,10 @@ EDIT PROFILE POPUP STYLING
 
     top: 0;
     left: 0;
+}
+
+.edit-profile-popup-wrapper.show {
+    display: flex;
 }
 
 .edit-profile-popup-wrap {
@@ -89,6 +93,46 @@ EDIT PROFILE POPUP STYLING
     color: white;
 }
 
+.edit-profile-form-cancel-btn {
+    background-color: white;
+    color: black;
+    border-radius: 1.5rem;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-profile-form-cancel-btn:hover {
+    background-color: black;
+    outline: solid 1px white;
+    color: white;
+}
+
+.edit-profile-errors-popup-wrapper.show {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgb(0, 0, 0, 0.6);
+
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+}
+
+.edit-profile-errors-popup-wrap {
+    padding: 2rem;
+    background-color: black;
+    border: solid 1px white;
+    border-radius: .5rem;
+
+    width: 500px;
+}
 
 /* PROFILE CARD INFORMATION */
 .profile-card-information {

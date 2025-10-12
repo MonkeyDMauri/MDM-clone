@@ -5,7 +5,45 @@ function _(element) {
 
 
 
+
+
+///////////////////////////////////////
+// CODE TO MAKE EDIT PROFILE FORM POPUP SHOW UP.
+///////////////////////////////////////
+
+// edit profile button in profile page section.
+const editBtn = _('.edit-profile-btn');
+// event listener for when this button is clicked.
+editBtn.addEventListener('click', toggleEditProfileForm);
+
+// cancel button in popup.
+const editProfileFormCancelBtn = _('.edit-profile-form-cancel-btn');
+// event listener for when this button is clicked.
+editProfileFormCancelBtn.addEventListener('click', toggleEditProfileForm);
+
+function toggleEditProfileForm() {
+    // grabbing pop up element to edit profile information.
+    const editProfilePopupWrapperElement = _('.edit-profile-popup-wrapper');
+    editProfilePopupWrapperElement.classList.toggle('show');
+}
+
+
+// checking for when the "ok" is clicked whenever the error popup is showing.
+document.addEventListener('click', e => {
+    if (e.target.matches('.edit-profile-errors-ok-btn')) {
+        toggleEditProfileErrorPopup();
+    }
+});
+
+function toggleEditProfileErrorPopup() {
+    const editProfileErrorsPopup = document.querySelector('.edit-profile-errors-popup-wrapper');
+    editProfileErrorsPopup.classList.toggle('show');
+}
+
+///////////////////////////////////////
 // CODE TO MAKE POST FORM POPUP SHOW UP.
+///////////////////////////////////////
+
 
 // post button element.
 const postBtn = _('.post-btn-flex');

@@ -58,7 +58,7 @@ Route::get('/profile-section', function () {
 Route::get('/get-posts', [PostController::class, 'getPosts'])->name('post.get');
 
 // Route to trigger logout.
-Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');;
+Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 
 // ========================
@@ -67,6 +67,9 @@ Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');;
 
 // This route is called by JS fetch request to get all posts that the current user has created.
 Route::get('/get-my-posts', [UserController::class, 'getPosts']);
+
+// This route is called when user submits "edit profile" form.
+Route::post('/edit-profile', [UserController::class, 'editProfile'])->name('profile.edit');
 
 // POST: this route is called when a user tries to create a post.
 Route::post('/create-post', [PostController::class, 'createPost'])->name('post.create');

@@ -96,21 +96,24 @@
         </section>
     </div>
 
+
+    {{-- Popup to update info profile --}}
     <div class="edit-profile-popup-wrapper">
         <div class="edit-profile-popup-wrap">
             <h1>Edit profile</h1>
-            <form action="" method="POST">
+            <form action="{{ route('profile.edit') }}" method="POST">
+                @csrf
                 <div class="edit-profile-form-wrapper">
                     <div class="edit-profile-form-input-container">
                         <label for="edit-name" class="edit-profile-label">Name</label>
                         <br>
-                        <input type="text" name="name" id="edit-name">
+                        <input type="text" name="name" id="edit-name" value="{{ auth()->user()->name }}">
                     </div>
                     
                     <div class="edit-profile-form-input-container">
                         <label for="edit-email" class="edit-profile-label">Email</label>
                         <br>
-                        <input type="text" name="email" id="edit-email">
+                        <input type="text" name="email" id="edit-email" value="{{ auth()->user()->email }}">
                     </div>
                     
                     <div class="edit-profile-form-input-container">
@@ -122,13 +125,31 @@
                         </select>
                     </div>
 
-                    <button class="edit-profile-form-save-btn">
-                        Save
-                    </button>
+                    <div>
+                        <button class="edit-profile-form-save-btn">
+                            Save
+                        </button>
+                        <button class="edit-profile-form-cancel-btn" type="button">
+                            Cancel
+                        </button>
+                    </div>
+                    
                 </div>
             </form>
         </div>
     </div>
+
+    {{-- This popup here will appear when there errors when trying to update profile info --}}
+    @if($errors->editProfileErrors->any())
+        <div class="edit-profile-errors-popup-wrapper show">
+            <div class="edit-profile-errors-popup-wrap">
+                @foreach ($errors->editProfileErrors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+                <button class="edit-profile-errors-ok-btn">ok</button>
+            </div>
+        </div>
+    @enderror
 </div>
 
 
