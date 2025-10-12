@@ -88,13 +88,14 @@ class UserController extends Controller
     }
 
     public function editProfile(Request $request) {
+
         $input = Validator::make( $request->all(), [
             'name' => 'required|string|min:3',
             'email' => 'required|email',
             'gender' => 'required'
         ],[
-            'name.min' => 'not long enough bro',
-            'email.email' => 'you gotta use email format bro'
+            'name.min' => 'Name must be 3 characters long at least',
+            'email.email' => 'Invalid email format'
         ]);
 
         if ($input->fails()) {

@@ -134,6 +134,29 @@ EDIT PROFILE POPUP STYLING
     width: 500px;
 }
 
+
+.edit-profile-errors-ok-btn {
+    background-color: black;
+    border: solid white 1px;   
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.edit-profile-errors-ok-btn:hover {
+    background-color: white;
+    color:black;
+}
+
+
+.edit-profile-errors-ok-btn-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
 /* PROFILE CARD INFORMATION */
 .profile-card-information {
     background-color: black;

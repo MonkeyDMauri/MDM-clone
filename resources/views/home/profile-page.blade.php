@@ -143,10 +143,15 @@
     @if($errors->editProfileErrors->any())
         <div class="edit-profile-errors-popup-wrapper show">
             <div class="edit-profile-errors-popup-wrap">
+                <h1>Something went wrong:</h1>
+
                 @foreach ($errors->editProfileErrors->all() as $error)
-                    <p>{{ $error }}</p>
+                    <p class="error">{{ $error }}</p>
                 @endforeach
-                <button class="edit-profile-errors-ok-btn">ok</button>
+
+                <div class="edit-profile-errors-ok-btn-wrapper">
+                    <button class="edit-profile-errors-ok-btn">Ok</button>
+                </div>
             </div>
         </div>
     @enderror
