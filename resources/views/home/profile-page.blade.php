@@ -21,6 +21,8 @@
                 @else
                     <img src="{{asset('images/other_images/' . auth()->user()->profile_pic_path)}}" alt="actual profile pic" class="default-female-profile-pic">
                 @endif
+
+                <button class="change-pic-btn">Change picture</button>
             </div>
         </div>
 
@@ -97,6 +99,24 @@
     </div>
 
 
+    {{-- Popup for then user wants to change profile picture --}}
+    <div class="change-profile-pic-popup-wrapper">
+        <div class="change-profile-pic-popup-wrap">
+            <h1>Edit profile picture</h1>
+            
+            <form action="" method="POST">
+                <div class="upload-profile-pic-form-wrapper">
+                    <label>Upload picture here</label>
+                    <br>
+                    <input type="file" name="new-profile-pic" id="new-profile-pic">
+                </div>
+                <button>Update</button>
+                <button class="change-pic-cancel-btn" type="button">cancel</button>
+            </form>
+            
+        </div>
+    </div>
+
     {{-- Popup to update info profile --}}
     <div class="edit-profile-popup-wrapper">
         <div class="edit-profile-popup-wrap">
@@ -121,7 +141,7 @@
                         <br>
                         <select name="gender" id="edit-gender" >
                             <option value="male">male</option>
-                            <option value="femail">female</option>
+                            <option value="female">female</option>
                         </select>
                     </div>
 

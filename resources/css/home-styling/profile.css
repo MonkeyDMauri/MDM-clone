@@ -31,6 +31,44 @@
     height: 230px
 }
 
+.change-pic-btn {
+    background-color: rgb(3, 131, 3);
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* EDIT PROFILE PIC POPUP STYLING */
+.change-profile-pic-popup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: none;
+    justify-content: center;
+    flex-direction: center;
+    align-items: center;
+
+    background-color: rgb(0, 0, 0, 0.6);
+
+}
+
+.change-profile-pic-popup-wrapper.show {
+    display: flex;
+}
+
+.change-profile-pic-popup-wrap {
+    background-color: black;
+    border: solid 1px white;
+    padding: 1.5rem 2.5rem;
+    border-radius: .5rem;
+}
+
 /* 
 EDIT PROFILE POPUP STYLING 
 */

@@ -1,9 +1,27 @@
-
+// function to grab elements
 function _(element) {
     return document.querySelector(element);
 }
 
 
+
+
+
+///////////////////////////////////////
+// CODE TO MAKE CHANGE PROFILE PIC FORM POPUP SHOW UP.
+///////////////////////////////////////
+
+// event listener for when "change picture" button is clicked. popup will appear
+_('.change-pic-btn').addEventListener('click', toggleChangeProfilePicPopup);
+
+// event listener for when "cancel" button in popup is clicked. popup will disappear.
+_('.change-pic-cancel-btn').addEventListener('click', toggleChangeProfilePicPopup);
+
+// function to toggle the "show" class for the change profile pic popup element.
+function toggleChangeProfilePicPopup() {
+    const popup = _('.change-profile-pic-popup-wrapper');
+    popup.classList.toggle('show');
+}
 
 
 
