@@ -51,6 +51,12 @@
                 </div>
             </div>
 
+            <div class="most-errors-wrapper">
+                @error('new-pic')
+                    <p>{{ $message }}</p>
+                @enderror
+            </div>
+
             <div class="post-btn-wrapper">
                 <button class="post-btn post-btn-flex">Post</button>
                 @if(session('success'))
@@ -104,16 +110,16 @@
         <div class="change-profile-pic-popup-wrap">
             <h1>Edit profile picture</h1>
             
-            <form action="" method="POST">
+            <form action="{{ route('change.profile.pic') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="upload-profile-pic-form-wrapper">
                     <label>Upload picture here</label>
                     <br>
-                    <input type="file" name="new-profile-pic" id="new-profile-pic">
+                    <input type="file" name="new-pic" id="new-profile-pic" class="new-pic">
                 </div>
-                <button>Update</button>
+                <button type="submit">Update</button>
                 <button class="change-pic-cancel-btn" type="button">cancel</button>
             </form>
-            
         </div>
     </div>
 
@@ -175,6 +181,8 @@
             </div>
         </div>
     @enderror
+
+
 </div>
 
 

@@ -73,3 +73,6 @@ Route::post('/edit-profile', [UserController::class, 'editProfile'])->name('prof
 
 // POST: this route is called when a user tries to create a post.
 Route::post('/create-post', [PostController::class, 'createPost'])->name('post.create');
+
+// This route is called when user tries to change their profile pic.
+Route::post('/change-profile-pic', [UserController::class, 'changeProfilePic'])->name('change.profile.pic');

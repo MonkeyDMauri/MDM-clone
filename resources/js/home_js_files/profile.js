@@ -8,7 +8,7 @@ function _(element) {
 
 
 ///////////////////////////////////////
-// CODE TO MAKE CHANGE PROFILE PIC FORM POPUP SHOW UP.
+// CHANGE PROFILE PIC CODE
 ///////////////////////////////////////
 
 // event listener for when "change picture" button is clicked. popup will appear
@@ -23,6 +23,26 @@ function toggleChangeProfilePicPopup() {
     popup.classList.toggle('show');
 }
 
+const inputToUploadNewProfilePic = _('.new-pic');
+
+inputToUploadNewProfilePic.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (!file) {
+        console.log('No file selected');
+        return; // no file selected
+    } else {
+        console.log('FILE!!')
+    }
+
+    // this piece of code check if the selected file is an image.
+    if (!file.type.startsWith('image/')) {
+        console.log('Not an image');
+        inputToUploadNewProfilePic.value = "";
+        return;
+    }
+
+
+});
 
 
 ///////////////////////////////////////
