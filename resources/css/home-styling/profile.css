@@ -67,6 +67,48 @@
     border: solid 1px white;
     padding: 1.5rem 2.5rem;
     border-radius: .5rem;
+
+    position: relative;
+}
+
+.change-pic-error-wrapper { /* This block here is for the popup inside the "change profile picture popup"*/
+    background-color: rgb(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.change-pic-error-wrapper.show {
+    display: flex;
+}
+
+.change-pic-error {
+    background-color: black;
+    border: white solid 1px;
+    border-radius: .5rem;
+    padding: 1rem 2rem
+}
+
+.change-pic-error p{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.change-pic-error button{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    padding: .5rem 1rem;
+    border: white solid 1px;
+    background-color: rgb(0, 49, 211);
+    cursor: pointer;
 }
 
 /* 

@@ -119,8 +119,22 @@
                 </div>
                 <button type="submit">Update</button>
                 <button class="change-pic-cancel-btn" type="button">cancel</button>
+                
             </form>
+
+            <div class="change-pic-error-wrapper">
+                <div class="change-pic-error">
+
+                    <p>Please select an image</p>
+
+                    <div class="change-pic-error-btn" style="display: flex; justify-content: center;">
+                        <button class="change-pic-error-ok-btn">ok</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        
     </div>
 
     {{-- Popup to update info profile --}}

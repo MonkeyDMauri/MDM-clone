@@ -23,10 +23,18 @@ function toggleChangeProfilePicPopup() {
     popup.classList.toggle('show');
 }
 
+function toggleErrorPopupInChangeProfileElement() {
+    const popup = document.querySelector('.change-pic-error-wrapper');
+    popup.classList.toggle('show');
+}
+
 const inputToUploadNewProfilePic = _('.new-pic');
 
 inputToUploadNewProfilePic.addEventListener('change', function (e) {
+    // grabbing file(s)/image uploaded.
     const file = e.target.files[0];
+
+    // verifying it's a file.
     if (!file) {
         console.log('No file selected');
         return; // no file selected
@@ -34,15 +42,21 @@ inputToUploadNewProfilePic.addEventListener('change', function (e) {
         console.log('FILE!!')
     }
 
-    // this piece of code check if the selected file is an image.
+    // this piece of code checks if the selected file is an image by making use of
+    // the JS startsWith method to check the file type.
     if (!file.type.startsWith('image/')) {
         console.log('Not an image');
         inputToUploadNewProfilePic.value = "";
+        toggleErrorPopupInChangeProfileElement();
         return;
     }
-
-
 });
+
+// This is the "ok" button inside the popup error that shows up when the user uploads a file that is not an image when they trt
+// to change their profile pic.
+const okBtnInChangePicError = _('.change-pic-error-ok-btn');
+// This event listener calls the function that makes the pop up error disappear.
+okBtnInChangePicError.addEventListener('click', toggleErrorPopupInChangeProfileElement);
 
 
 ///////////////////////////////////////
