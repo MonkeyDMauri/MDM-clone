@@ -115,27 +115,19 @@ class UserController extends Controller
     }
 
     public function changeProfilePic(Request $request) {
-        $validator = $request->validate([
-            'new-pic' => 'required|file|mimes:jpg,jpeg,png'
-        ], [
-            'new-pic.mimes' => 'file must be a picture bro',
-            'new-pic.file' => 'please upload a picture'
-        ]);
-
-        // $input = Validator::make($request->all(), [
-        //     'new-pic' => 'required|file|mimes:jpg,jpeg,png'
-        // ], [
-        //     'new-pic.required' => 'A picture must be selected',
-        //     'new-pic.mimes' => 'File must be either jpg,jpeg or png'
-        // ]);
-
-        // if ($input->fails()) {
-        //     return back()->withErrors($input, 'changePic');
-        // }
+  
 
         $img = $request->file('new-pic');
 
-        return $img;
+        $imgName = $img->getClientOriginalName();
+
+        $path = $img->storeAs('images/other_images', $imgName, 'public');
+
+        $user = Auth()->user();
+        $user->profile_pic_path = $imgName;
+        $user->save();
+
+        return $path;
     }
 }
 

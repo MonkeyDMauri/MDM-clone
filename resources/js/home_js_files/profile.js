@@ -47,7 +47,7 @@ inputToUploadNewProfilePic.addEventListener('change', function (e) {
     if (!file.type.startsWith('image/')) {
         console.log('Not an image');
         inputToUploadNewProfilePic.value = "";
-        toggleErrorPopupInChangeProfileElement();
+        toggleErrorPopupInChangeProfileElement(); // This is the funcion that makes the pop up saying "please upload an image" show up
         return;
     }
 });
