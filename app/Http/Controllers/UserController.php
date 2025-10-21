@@ -127,7 +127,7 @@ class UserController extends Controller
         $user->profile_pic_path = $imgName;
         $user->save();
 
-        return $path;
+        return back();
     }
 }
 
