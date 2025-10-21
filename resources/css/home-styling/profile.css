@@ -147,6 +147,12 @@ EDIT PROFILE POPUP STYLING
 .edit-profile-form-input-container {
     margin: 1rem 0
 }
+.bio-textarea {
+    min-width: 55%;
+    min-height: 100px;
+    font-size: 1rem;
+    resize: none
+}
 
 #edit-gender {
     width: 200px;

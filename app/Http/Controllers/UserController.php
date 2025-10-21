@@ -92,6 +92,7 @@ class UserController extends Controller
         $input = Validator::make( $request->all(), [
             'name' => 'required|string|min:3',
             'email' => 'required|email',
+            'bio' => 'required',
             'gender' => 'required'
         ],[
             'name.min' => 'Name must be 3 characters long at least',
@@ -107,6 +108,7 @@ class UserController extends Controller
         $currentUser->update([
             'name' => $request->name,
             'email' => $request->email,
+            'bio' => $request->bio,
             'gender' => $request->gender
         ]);
 
@@ -116,11 +118,13 @@ class UserController extends Controller
 
     public function changeProfilePic(Request $request) {
   
-
+        // File object.
         $img = $request->file('new-pic');
 
+        // File name.
         $imgName = $img->getClientOriginalName();
 
+        // Uploading/saving uploaded file to location inside storage/app/public
         $path = $img->storeAs('images/other_images', $imgName, 'public');
 
         $user = Auth()->user();

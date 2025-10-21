@@ -155,6 +155,12 @@
                         <br>
                         <input type="text" name="email" id="edit-email" value="{{ auth()->user()->email }}">
                     </div>
+
+                    <div class="edit-profile-form-input-container">
+                        <label for="edit-bio" class="edit-profile-label">Bio</label>
+                        <br>
+                        <textarea name="bio" id="edit-bio" class="bio-textarea">{{ auth()->user()->bio }}</textarea>
+                    </div>
                     
                     <div class="edit-profile-form-input-container">
                         <label for="edit-gender" class="edit-profile-label">Gender</label>
