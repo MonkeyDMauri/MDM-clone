@@ -72,7 +72,35 @@
             </div>
 
             <section class="posts-section">
-                posts go here
+                @foreach ( $posts as $post)
+                    <div class="post-container">
+                        <input type="hidden" class="post-id" value="{{ $post->id }}">
+                        <div class="" style="display: flex; gap: .5rem; align-items: center;">
+                            <p class="post-username">{{ auth()->user()->name }}</p>
+                            <p class="post-email">{{ auth()->user()->email }}</p>
+
+                        </div>
+
+                        <p class="post-title">{{ $post->title }}</p>
+
+                        <p class="post-description">{{ $post->description}}</p>
+
+                        <div class="post-footer">
+                            <div class="post-action-buttons" style="display: flex; gap: .5rem;">
+                                <img src="images/default-images/like_btn.png" alt="like button image" class="like-btn-img">
+                                <img src="images/default-images/dislike_btn.png" alt="like button image" class="dislike-btn-img">
+                                <img src="images/default-images/share_btn.png" alt="like button image" class="share-btn-img">
+                            </div>
+
+                            <div class="post-stats" style="display: flex; gap: .5rem;">
+                                <p>likes {{$post->likes}}</p>
+                                <p>dislikes {{$post->dislikes}}</p>
+                                <p>shared {{ $post->times_shared }}</p>
+                            </div>
+
+                        </div> 
+                    </div>
+                @endforeach
             </section>
 
             {{-- This popup will show up when user wants to create a post, therefor it is not displayed by  default --}}

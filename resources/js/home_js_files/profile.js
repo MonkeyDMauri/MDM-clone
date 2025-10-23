@@ -119,6 +119,57 @@ function togglePostFormPopup() {
     postFormPopup.classList.toggle('show');
 }
 
+/////////////////////////////
+// POST BUTTONS FUNCTIONALITY
+//////////////////////////////
+
+// NOTE!
+// The following functions basically give funcionality to all the buttons that can be found inside a post, like, share, etc.
+
+// This function checks what post was the "like" button clicked for.
+function likeWhatPost(e) {
+    console.log('like button clciked');
+
+    // post container element.
+    const postContainer = e.target.closest('.post-container');
+
+    const postId = postContainer.querySelector('.post-id').value;
+
+    likePost(postId);
+}
+
+// This functions takes the post ID as parameter and then sends a Fecth request 
+// for laravel logic to update the "likes" count for the post.
+function likePost(postId) {
+    console.log(postId);
+
+    // Fetch request to Laravel route for logic that will update "like" count for post.
+
+
+
+    
+};
+
+// This event listener activates when the like button in a post is clicked.
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.like-btn-img')) {
+        // function that first checks what post was the "like" button clicked for.
+        likeWhatPost(e);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////
 // CODE TO GET CURRENT USER'S POSTS AND THEN DISPLAY THEM.
 
@@ -149,7 +200,7 @@ function getPostForCurrentUserOnly ()
     });
  };
 
-getPostForCurrentUserOnly();
+// getPostForCurrentUserOnly();
 
 
 

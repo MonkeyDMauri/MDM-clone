@@ -50,8 +50,16 @@ Route::get('/people-section', function () {
     return view('home.people');
 })->name('people.section');
 
+// Go to profile page.
 Route::get('/profile-section', function () {
-    return view('home.profile-page');
+    // current authenticated user.
+    $user = Auth()->user();
+
+    // All posts belonging to current authenticated user.
+    $currentUserPosts = $user->posts;
+
+    // redirecting user to profile page and passing all posts to the page to then display em.
+    return view('home.profile-page', ['posts' => $currentUserPosts]);
 })->name('profile.section');
 
 // This request will come from a JS fetch request to get all posts.

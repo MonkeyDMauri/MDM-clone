@@ -402,7 +402,7 @@ EDIT PROFILE POPUP STYLING
     flex-direction: column;
 }
 
-.post-card {
+.post-container {
     padding: 1rem;
     border: solid 1px white;
 }
