@@ -13,10 +13,10 @@
             <img src="{{ asset("images/default-images/default_banner.jpeg") }}" alt="default banner image"
             class="default-banner-image">
             <div class="profile-pic-container">
-                @if(auth()->user()->gender === 'male' && auth()->user()->profile_pic_path == NULL)
+                @if(auth()->user()->gender === 'male' && auth()->user()->profile_pic_path == 'none')
                     <img src="{{asset('images/default-images/male-pic.jpg')}}" alt="default male profile pic"
                 class="default-male-profile-pic">
-                @elseif (auth()->user()->gender === 'female' && auth()->user()->profile_pic_path == NULL)
+                @elseif (auth()->user()->gender === 'female' && auth()->user()->profile_pic_path == 'none')
                     <img src="{{asset('images/default-images/female-pic.jpeg')}}" alt="SOME PIC" class="default-female-profile-pic">
                 @else
                     <img src="{{asset('storage/images/other_images/' . auth()->user()->profile_pic_path)}}" alt="actual profile pic" class="default-female-profile-pic">
@@ -35,6 +35,7 @@
             <div class="user-basic-info-wrapper">
                 <div class="user-username">{{Auth::user()->name}}</div>
                 <div class="user-email">{{Auth::user()->email}}</div>
+                <div class="user-id">ID: {{ Auth()->user()->id }}</div>
 
                 <div class="user-bio">
                     @if (Auth::user()->bio === NULL)

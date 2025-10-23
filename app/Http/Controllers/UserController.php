@@ -28,12 +28,9 @@ class UserController extends Controller
         // manually hashing password before creating new user account.
         $input['passsword'] = Hash::make($input['password']);
     
-        // setting right default image depending on new user's selected gender.
-        if ($request->gender === 'male') {
-            $input['profile_pic_path'] = 'male-pic.jpg';
-        } else {
-            $input['profile_pic_path'] = 'female-pic.jpeg';
-        }
+        // setting default image path to "none" cuz these profiles come with no pictures, therefore a 
+        // profile pic is assigned depending on the gender.
+        $input['profile_pic_path'] = 'none';
 
         // Creating new user account using the User model.
         $user = User::create($input);
@@ -67,7 +64,7 @@ class UserController extends Controller
     }
 
 
-    
+
     // This function gets all posts current user has created only (not all posts).
     public function getPosts() {
 
@@ -124,7 +121,7 @@ class UserController extends Controller
         // File name.
         $imgName = $img->getClientOriginalName();
 
-        // Uploading/saving uploaded file to location inside storage/app/public
+        // Uploading/saving uploaded file to location inside storage/app/public.
         $path = $img->storeAs('images/other_images', $imgName, 'public');
 
         $user = Auth()->user();
