@@ -393,6 +393,11 @@ EDIT PROFILE POPUP STYLING
     height: 80px;
 }
 
+.upload-pic-img {
+    height: 50px;
+    cursor: pointer;
+}
+
 /*POST SECTION STYLING*/
 .posts-section {
     border-top: solid 1px white;

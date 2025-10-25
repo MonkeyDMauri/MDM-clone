@@ -121,6 +121,17 @@
                                 <textarea name="description" id="desc">Enter a description</textarea>
                             </div>
 
+                            <div class="post-form-field">
+                                <label for="upload-img">
+                                    <img src="{{ asset('storage/website_images/upload_pic_icon.png') }}" alt="upload pic icon" class="upload-pic-img">
+                                </label>
+                                <input type="file" name="post-pic" style="display: none;" id="upload-img">
+                            </div>
+
+                            <div class="current-selected-pic-container">
+                                {{-- current selected pic to upload goes here, this will be displayed using JS --}}
+                            </div>
+
                             <div class="post-form-btn-wrapper">
                                 <button class="post-btn">Post</button>
                                 <button class="post-cancel-btn" type="button">Cancel</button>
