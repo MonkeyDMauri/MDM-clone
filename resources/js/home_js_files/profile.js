@@ -3,8 +3,8 @@ function _(element) {
     return document.querySelector(element);
 }
 
-
-
+// CSRF token.
+const csrfToken = _('meta[name="csrf-token"]').getAttribute('content');
 
 
 ///////////////////////////////////////
@@ -126,9 +126,14 @@ function togglePostFormPopup() {
 // NOTE!
 // The following functions basically give funcionality to all the buttons that can be found inside a post, like, share, etc.
 
+
+_('.like-btn-img').addEventListener('click', (e) => {
+    likeWhatPost(e);
+});
+
 // This function checks what post was the "like" button clicked for.
 function likeWhatPost(e) {
-    console.log('like button clciked');
+    console.log('like button clicked');
 
     // post container element.
     const postContainer = e.target.closest('.post-container');
@@ -143,9 +148,34 @@ function likeWhatPost(e) {
 function likePost(postId) {
     console.log(postId);
 
+    // we need to send the info as JSON therefore I create this object.
+    const postIdObject = {
+        'post_id' : postId
+    }
+
     // Fetch request to Laravel route for logic that will update "like" count for post.
-
-
+    fetch(`/profile-section/like-post`, {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json',
+            'X-CSRF-TOKEN' : csrfToken
+        },
+        body: JSON.stringify(postIdObject)
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Error when sending request to like post:', res.status);
+        } else {
+            return res.json();
+        }
+    })
+    .then(data => {
+        if (data.success) {
+            location.reload();
+            console.log('Post ID', data.id);
+        } 
+    })
+    .catch(err => console.error(err));
 
     
 };

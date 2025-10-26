@@ -84,3 +84,6 @@ Route::post('/create-post', [PostController::class, 'createPost'])->name('post.c
 
 // This route is called when user tries to change their profile pic.
 Route::post('/change-profile-pic', [UserController::class, 'changeProfilePic'])->name('change.profile.pic');
+
+// Route to like post.
+Route::post('/profile-section/like-post', [PostController::class, 'likePost']);

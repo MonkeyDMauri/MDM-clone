@@ -36,4 +36,10 @@ class PostController extends Controller
 
         return back()->with('success', 'Post created');
     }
+
+    public function likePost(Request $request) {
+        $input = $request->json()->all();
+
+        return response()->json(['id' => $input['post_id'], 'success' => true]);
+    }
 }
