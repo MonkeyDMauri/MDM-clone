@@ -40,6 +40,46 @@ class PostController extends Controller
     public function likePost(Request $request) {
         $input = $request->json()->all();
 
-        return response()->json(['id' => $input['post_id'], 'success' => true]);
+        $postId = $input['post_id'];
+
+        // post instance/object.
+        $post = Post::findOrFail($postId);
+
+        // number of likes this post currently has.
+        $postLikes = $post->likes;
+
+        // current user.
+        $user = Auth()->user();
+
+        $liked = $user->likedPosts()->where('post_id', $postId)->exists();
+
+        // checking to see if this user has already liked this post.
+        if ($liked) {
+
+            // removving like from this post (basic substraction, then update).
+            $post->update([
+                'likes' => $postLikes - 1
+            ]);
+
+            $post->save();
+
+            $user->likedPosts()->detach($post->id);
+
+            return response()->json(['post' => $post, 'success' => true, 'message' => 'disliking this post']);
+        } else {
+            
+            // adding one more like to this post (basic sum, then update).
+            $post->update([
+                'likes' => $postLikes + 1
+            ]);
+
+            $post->save();
+
+            // Now we add new row to the "likes" table to create a record that this user has already liked this post.
+            $user->likedPosts()->attach($post->id);
+        }
+
+
+        return response()->json(['post' => $post, 'success' => true, 'message' => 'you just liked this post']);
     }
 }

@@ -119,14 +119,16 @@ function togglePostFormPopup() {
     postFormPopup.classList.toggle('show');
 }
 
-/////////////////////////////
-// POST BUTTONS FUNCTIONALITY
-//////////////////////////////
+///////////////////////////////
+// POST BUTTONS FUNCTIONALITY//
+///////////////////////////////
 
 // NOTE!
 // The following functions basically give funcionality to all the buttons that can be found inside a post, like, share, etc.
 
-
+//////////////////
+// LIKE BUTTON ///
+//////////////////
 _('.like-btn-img').addEventListener('click', (e) => {
     likeWhatPost(e);
 });
@@ -172,13 +174,15 @@ function likePost(postId) {
     .then(data => {
         if (data.success) {
             location.reload();
-            console.log('Post ID', data.id);
+            console.log('Post current like count', data.post.likes);
+            console.log(data.message);
         } 
     })
     .catch(err => console.error(err));
 
     
 };
+
 
 // This event listener activates when the like button in a post is clicked.
 document.addEventListener('click', (e) => {
@@ -189,9 +193,22 @@ document.addEventListener('click', (e) => {
 });
 
 
+/////////////////////
+// DISLIKE BUTTON ///
+/////////////////////
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.dislike-btn-img')) {
+        findPostToDislikeID(e);
+    }
+});
 
+function findPostToDislikeID(e) {
 
+    const post = e.target.closest('.post-container');
 
+    const postId = post.querySelector('.post-id').value;
+    console.log('dislike button was clicked, post ID:', postId);
+}
 
 
 

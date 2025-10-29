@@ -87,6 +87,11 @@
 
                         <div class="post-footer">
                             <div class="post-action-buttons" style="display: flex; gap: .5rem;">
+                                {{-- @if (auth()->user()->likedPosts()->where('post_id', $post->id)->exists())
+                                    <h1>already liked</h1>
+                                @else
+                                    <img src="images/default-images/like_btn.png" alt="like button image" class="like-btn-img">
+                                @endif --}}
                                 <img src="images/default-images/like_btn.png" alt="like button image" class="like-btn-img">
                                 <img src="images/default-images/dislike_btn.png" alt="like button image" class="dislike-btn-img">
                                 <img src="images/default-images/share_btn.png" alt="like button image" class="share-btn-img">

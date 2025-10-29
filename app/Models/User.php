@@ -57,6 +57,12 @@ class User extends Authenticatable
 
     // relationship with posts (using pivot table)
     public function posts() {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class)->withTimestamps();
+    }
+
+    // Many-2-Many relationship between the user model and post model but to keep track of likes 
+    // (pivot table).
+    public function likedPosts() {
+        return $this->belongsToMany(Post::class, 'likes')->withTimestamps();
     }
 }
