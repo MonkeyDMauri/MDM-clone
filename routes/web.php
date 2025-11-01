@@ -87,3 +87,6 @@ Route::post('/change-profile-pic', [UserController::class, 'changeProfilePic'])-
 
 // Route to like post.
 Route::post('/profile-section/like-post', [PostController::class, 'likePost']);
+
+// Route to dislike post.
+Route::get('/dislike-post/{post}', [PostController::class, 'dislikePost']);

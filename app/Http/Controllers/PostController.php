@@ -82,4 +82,28 @@ class PostController extends Controller
 
         return response()->json(['post' => $post, 'success' => true, 'message' => 'you just liked this post']);
     }
+
+    public function dislikePost(Post $post) {
+
+        $postCurrentDislikes = $post->dislikes;
+
+        $user = Auth()->user();
+
+        if (!$user->dislikedPosts()->where('post_id', $post->id)->exists()) {
+            $user->dislikedPosts()->attach($post->id);
+            
+            $post->update(['dislikes' => $postCurrentDislikes + 1]);
+
+            $message = 'post already disliked';
+        } else {
+            $user->dislikedPosts()->detach($post->id);
+
+            $post->update(['dislikes' => $postCurrentDislikes - 1]);
+
+
+            $message = 'post disliked';
+        }
+        
+        return response()->json(['postId' => $post->title, 'success' => true, 'message' => $message]);
+    }
 }

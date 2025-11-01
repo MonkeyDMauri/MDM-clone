@@ -208,6 +208,36 @@ function findPostToDislikeID(e) {
 
     const postId = post.querySelector('.post-id').value;
     console.log('dislike button was clicked, post ID:', postId);
+
+    dislikePost(postId);
+}
+
+function dislikePost(id) {
+    console.log('initiating process to send fetch request over to Laravel, ID:', id);
+
+    fetch(`/dislike-post/${id}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+            'CSFR-X-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Bad Network response:', res.status);
+        } else {
+            return res.json();
+        }
+    })
+    .then(data => {
+        if (data.success) {
+            location.reload();
+            console.log('SMILE');
+            console.log('post title:', data.postId);
+            console.log('message:', data.message);
+        }
+    })
+    .catch(err => console.error(err));
 }
 
 
