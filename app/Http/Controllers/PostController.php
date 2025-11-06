@@ -117,7 +117,7 @@ class PostController extends Controller
         // can be added.
         if ($user->likedPosts()->where('post_id', $post->id)->exists()) {
             // removing relationship in pivot table.
-            $user->dislikedPosts()->detach($post->id);
+            $user->likedPosts()->detach($post->id);
 
             // updating dislikes count.
             $post->update([

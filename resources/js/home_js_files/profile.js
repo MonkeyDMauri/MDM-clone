@@ -129,13 +129,11 @@ function togglePostFormPopup() {
 //////////////////
 // LIKE BUTTON ///
 //////////////////
-_('.like-btn-img').addEventListener('click', (e) => {
-    likeWhatPost(e);
-});
+
 
 // This function checks what post was the "like" button clicked for.
 function likeWhatPost(e) {
-    console.log('like button clicked');
+    // console.log('like button clicked');
 
     // post container element.
     const postContainer = e.target.closest('.post-container');
