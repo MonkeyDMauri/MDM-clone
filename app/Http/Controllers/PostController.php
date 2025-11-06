@@ -38,18 +38,42 @@ class PostController extends Controller
     }
 
     public function likePost(Request $request) {
+
+        // getting input data from the request.
         $input = $request->json()->all();
 
+        // current user.
+        $user = Auth()->user();
+
+        // post id.
         $postId = $input['post_id'];
 
         // post instance/object.
         $post = Post::findOrFail($postId);
 
+
         // number of likes this post currently has.
         $postLikes = $post->likes;
 
-        // current user.
-        $user = Auth()->user();
+        // number of dislikes this post currently has.
+        $postDislikes = $post->dislikes;
+
+
+
+        // Checking to see if user has previously disliked the post, if they did, we need to undo that so then a "like"
+        // can be added.
+        if ($user->dislikedPosts()->where('post_id', $postId)->exists()) {
+            // removing relationship in pivot table.
+            $user->dislikedPosts()->detach($postId);
+
+            // updating dislikes count.
+            $post->update([
+                'dislikes' => $postDislikes - 1
+            ]);
+
+            $post->save();
+        }
+
 
         $liked = $user->likedPosts()->where('post_id', $postId)->exists();
 
@@ -84,10 +108,26 @@ class PostController extends Controller
     }
 
     public function dislikePost(Post $post) {
+        $user = Auth()->user();
 
         $postCurrentDislikes = $post->dislikes;
+        $postCurrentLikes = $post->likes;
 
-        $user = Auth()->user();
+        // Checking to see if user has previously liked the post, if they did, we need to undo that so then a "dislike"
+        // can be added.
+        if ($user->likedPosts()->where('post_id', $post->id)->exists()) {
+            // removing relationship in pivot table.
+            $user->dislikedPosts()->detach($post->id);
+
+            // updating dislikes count.
+            $post->update([
+                'likes' => $postCurrentLikes - 1
+            ]);
+
+            $post->save();
+        }
+
+        
 
         if (!$user->dislikedPosts()->where('post_id', $post->id)->exists()) {
             $user->dislikedPosts()->attach($post->id);
