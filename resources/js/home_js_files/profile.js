@@ -239,6 +239,24 @@ function dislikePost(id) {
 }
 
 
+////////////////////////////////////
+// CREATE POST (SHOW PREVIEW IMAGE)/
+////////////////////////////////////
+
+const postPicInput = document.querySelector('#upload-img');
+const previewImageContainer = _('.preview-image-post');
+
+postPicInput.addEventListener('change', e => {
+    const file = postPicInput.files[0];
+    console.log(file);
+
+    const imageURL = URL.createObjectURL(file);
+
+    previewImageContainer.src = imageURL;
+
+    console.log('mamamammamam');
+});
+
 
 
 
