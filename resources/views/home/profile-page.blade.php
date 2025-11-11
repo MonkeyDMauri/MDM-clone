@@ -136,12 +136,14 @@
                                 <label for="upload-img">
                                     <img src="{{ asset('storage/website_images/upload_pic_icon.png') }}" alt="upload pic icon" class="upload-pic-img">
                                 </label>
-                                <input type="file" name="post-pic-input" style="display: none;" id="upload-img">
+                                <input type="file" name="post-pic-input" id="upload-img">
+                                <p class="check-btn">check</p>
                             </div>
 
                             <div class="current-selected-pic-container">
                                 {{-- current selected pic to upload goes here, this will be displayed using JS --}}
                                 <img src="" class="preview-image-post" alt="image preview">
+                                <span class="remove-post-pic-btn">X</span>
                             </div>
 
                             <div class="post-form-btn-wrapper">

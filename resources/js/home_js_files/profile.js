@@ -243,23 +243,49 @@ function dislikePost(id) {
 // CREATE POST (SHOW PREVIEW IMAGE)/
 ////////////////////////////////////
 
-const postPicInput = document.querySelector('#upload-img');
-const previewImageContainer = _('.preview-image-post');
+
+const postPicInput = document.querySelector('#upload-img'); // this is the <input> where file/image will be selected.
+const previewImageContainer = _('.preview-image-post'); // this is the <img></img> element.
+const removePostImagePreviewBtn = _('.remove-post-pic-btn'); // button we click to remove the preview 
+// image from display (in case the user changes their mind).
 
 postPicInput.addEventListener('change', e => {
     const file = postPicInput.files[0];
     console.log(file);
 
-    const imageURL = URL.createObjectURL(file);
+    if (file) {
+        // creating local URL to host image (valid for this HTTP browser request only).
+        const imageURL = URL.createObjectURL(file);
 
-    previewImageContainer.src = imageURL;
+        // populating <img> src attribute with the URL with just created.
+        previewImageContainer.src = imageURL;
 
-    console.log('mamamammamam');
+        // we'll now wanna display the X button to clear the preview image for the user to click in case they change their mind.
+        removePostImagePreviewBtn.classList.add('show');
+    }
+
 });
 
 
 
+// this is what's trigger the the "X" button is clicked, it removes the value inside the <input> and the src from the <img> element.
+// when this button is pressed we will also wanna make it disappear (cuz there's no pic selected).
+removePostImagePreviewBtn.addEventListener('click', e => {
+    postPicInput.value = "";
+    previewImageContainer.src = "";
+    removePostImagePreviewBtn.classList.remove('show');
+});
 
+
+const check = _('.check-btn');
+
+check.addEventListener('click', e => {
+    if (postPicInput.files[0]) {
+        console.log('file selected');
+    } else {
+        console.log('no file selected');
+    }
+});
 
 
 
