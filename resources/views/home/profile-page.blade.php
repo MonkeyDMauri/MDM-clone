@@ -118,9 +118,9 @@
             <div class="post-form-popup-wrapper">
                 <div class="post-form-popup-wrap">
                     <h1 style="margin: 0;">Create Post</h1>
-                    <form action="{{route('post.create')}}" method="POST">                        
+                    <form action="{{route('post.create')}}" method="POST" enctype="multipart/form-data">                        
                         @csrf
-                        {{-- element containing post form --}}
+                        {{-- post form --}}
                         <div class="post-form">
                             <div class="post-form-field">
                                 <label for="title">Title</label> <br>
@@ -136,13 +136,15 @@
                                 <label for="upload-img">
                                     <img src="{{ asset('storage/website_images/upload_pic_icon.png') }}" alt="upload pic icon" class="upload-pic-img">
                                 </label>
-                                <input type="file" name="post-pic-input" id="upload-img">
-                                <p class="check-btn">check</p>
+
+                                <input type="file" name="postPic" id="upload-img" style="display: none;">
+
+                                {{-- <p class="check-btn">check</p> --}}
                             </div>
 
                             <div class="current-selected-pic-container">
                                 {{-- current selected pic to upload goes here, this will be displayed using JS --}}
-                                <img src="" class="preview-image-post" alt="image preview">
+                                <img src="" class="preview-image-post">
                                 <span class="remove-post-pic-btn">X</span>
                             </div>
 

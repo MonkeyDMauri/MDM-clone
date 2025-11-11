@@ -18,14 +18,26 @@ class PostController extends Controller
         // Validating data received.
         $input = $request->validate([
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
         ]);
+
 
         // I forgot to set a default value for these columns in the "posts" table so I defined them here.
         $input['likes'] = 0;
         $input['dislikes'] = 0;
         $input['times_shared'] = 0;
         $input['user_id'] = Auth()->user()->id;
+
+        if ($request->postPic) {
+            // getting file/image name.
+            $img = $request->file('postPic');
+            $imgName = $img->getClientOriginalName();
+
+            $input['image'] = $imgName;
+
+            $path = $img->storeAs('images/post_images', $imgName, 'public');
+
+        }
 
         // Inserting new post into "posts" table.
         $post = Post::create($input);
