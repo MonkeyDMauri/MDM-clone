@@ -71,8 +71,47 @@
                 @enderror
             </div>
 
+            {{-- POST SECTION --}}
             <section class="posts-section">
-                posts go here
+                @foreach ( $posts as $post)
+                    <div class="post-container">
+                        <input type="hidden" class="post-id" value="{{ $post->id }}">
+                        <div class="" style="display: flex; gap: .5rem; align-items: center;">
+                            <p class="post-username">{{ auth()->user()->name }}</p>
+                            <p class="post-email">{{ auth()->user()->email }}</p>
+
+                        </div>
+
+                        <p class="post-title">{{ $post->title }}</p>
+
+                        <p class="post-description">{{ $post->description}}</p>
+
+                        <div class="post-footer">
+                            <div class="post-action-buttons" style="display: flex; gap: .5rem;">
+                                @if (Auth()->user()->likedPosts()->where('post_id', $post->id)->exists())
+                                    <img src="{{ asset('storage/website_images/liked.png') }}" alt="liked icond" class="like-btn-img">
+                                @else
+                                    <img src="images/default-images/like_btn.png" alt="like button image" class="like-btn-img">
+                                @endif
+
+                                @if (Auth()->user()->dislikedPosts()->where('post_id', $post->id)->exists())
+                                    <img src="{{ asset('storage/website_images/dislike.png') }}" alt="liked icond" class="dislike-btn-img">
+                                @else
+                                    <img src="images/default-images/dislike_btn.png" alt="like button image" class="dislike-btn-img">
+                                @endif
+                                
+                                <img src="images/default-images/share_btn.png" alt="like button image" class="share-btn-img">
+                            </div>
+
+                            <div class="post-stats" style="display: flex; gap: .5rem;">
+                                <p>likes {{$post->likes}}</p>
+                                <p>dislikes {{$post->dislikes}}</p>
+                                <p>shared {{ $post->times_shared }}</p>
+                            </div>
+
+                        </div> 
+                    </div>
+                @endforeach
             </section>
 
             {{-- This popup will show up when user wants to create a post, therefor it is not displayed by  default --}}
@@ -91,6 +130,20 @@
                             <div class="post-form-field">
                                 <label for="desc">Description</label> <br>
                                 <textarea name="description" id="desc">Enter a description</textarea>
+                            </div>
+
+                            <div class="post-form-field">
+                                <label for="upload-img">
+                                    <img src="{{ asset('storage/website_images/upload_pic_icon.png') }}" alt="upload pic icon" class="upload-pic-img">
+                                </label>
+                                <input type="file" name="post-pic-input" id="upload-img">
+                                <p class="check-btn">check</p>
+                            </div>
+
+                            <div class="current-selected-pic-container">
+                                {{-- current selected pic to upload goes here, this will be displayed using JS --}}
+                                <img src="" class="preview-image-post" alt="image preview">
+                                <span class="remove-post-pic-btn">X</span>
                             </div>
 
                             <div class="post-form-btn-wrapper">

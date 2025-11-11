@@ -3,8 +3,8 @@ function _(element) {
     return document.querySelector(element);
 }
 
-
-
+// CSRF token.
+const csrfToken = _('meta[name="csrf-token"]').getAttribute('content');
 
 
 ///////////////////////////////////////
@@ -119,6 +119,176 @@ function togglePostFormPopup() {
     postFormPopup.classList.toggle('show');
 }
 
+///////////////////////////////
+// POST BUTTONS FUNCTIONALITY//
+///////////////////////////////
+
+// NOTE!
+// The following functions basically give funcionality to all the buttons that can be found inside a post, like, share, etc.
+
+//////////////////
+// LIKE BUTTON ///
+//////////////////
+
+
+// This function checks what post was the "like" button clicked for.
+function likeWhatPost(e) {
+    // console.log('like button clicked');
+
+    // post container element.
+    const postContainer = e.target.closest('.post-container');
+
+    const postId = postContainer.querySelector('.post-id').value;
+
+    likePost(postId);
+}
+
+// This functions takes the post ID as parameter and then sends a Fecth request 
+// for laravel logic to update the "likes" count for the post.
+function likePost(postId) {
+    console.log(postId);
+
+    // we need to send the info as JSON therefore I create this object.
+    const postIdObject = {
+        'post_id' : postId
+    }
+
+    // Fetch request to Laravel route for logic that will update "like" count for post.
+    fetch(`/profile-section/like-post`, {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json',
+            'X-CSRF-TOKEN' : csrfToken
+        },
+        body: JSON.stringify(postIdObject)
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Error when sending request to like post:', res.status);
+        } else {
+            return res.json();
+        }
+    })
+    .then(data => {
+        if (data.success) {
+            location.reload();
+            console.log('Post current like count', data.post.likes);
+            console.log(data.message);
+        } 
+    })
+    .catch(err => console.error(err));
+
+    
+};
+
+
+// This event listener activates when the like button in a post is clicked.
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.like-btn-img')) {
+        // function that first checks what post was the "like" button clicked for.
+        likeWhatPost(e);
+    }
+});
+
+
+/////////////////////
+// DISLIKE BUTTON ///
+/////////////////////
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.dislike-btn-img')) {
+        findPostToDislikeID(e);
+    }
+});
+
+function findPostToDislikeID(e) {
+
+    const post = e.target.closest('.post-container');
+
+    const postId = post.querySelector('.post-id').value;
+    console.log('dislike button was clicked, post ID:', postId);
+
+    dislikePost(postId);
+}
+
+function dislikePost(id) {
+    console.log('initiating process to send fetch request over to Laravel, ID:', id);
+
+    fetch(`/dislike-post/${id}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+            'CSFR-X-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Bad Network response:', res.status);
+        } else {
+            return res.json();
+        }
+    })
+    .then(data => {
+        if (data.success) {
+            location.reload();
+            console.log('SMILE');
+            console.log('post title:', data.postId);
+            console.log('message:', data.message);
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+
+////////////////////////////////////
+// CREATE POST (SHOW PREVIEW IMAGE)/
+////////////////////////////////////
+
+
+const postPicInput = document.querySelector('#upload-img'); // this is the <input> where file/image will be selected.
+const previewImageContainer = _('.preview-image-post'); // this is the <img></img> element.
+const removePostImagePreviewBtn = _('.remove-post-pic-btn'); // button we click to remove the preview 
+// image from display (in case the user changes their mind).
+
+postPicInput.addEventListener('change', e => {
+    const file = postPicInput.files[0];
+    console.log(file);
+
+    if (file) {
+        // creating local URL to host image (valid for this HTTP browser request only).
+        const imageURL = URL.createObjectURL(file);
+
+        // populating <img> src attribute with the URL with just created.
+        previewImageContainer.src = imageURL;
+
+        // we'll now wanna display the X button to clear the preview image for the user to click in case they change their mind.
+        removePostImagePreviewBtn.classList.add('show');
+    }
+
+});
+
+
+
+// this is what's trigger the the "X" button is clicked, it removes the value inside the <input> and the src from the <img> element.
+// when this button is pressed we will also wanna make it disappear (cuz there's no pic selected).
+removePostImagePreviewBtn.addEventListener('click', e => {
+    postPicInput.value = "";
+    previewImageContainer.src = "";
+    removePostImagePreviewBtn.classList.remove('show');
+});
+
+
+const check = _('.check-btn');
+
+check.addEventListener('click', e => {
+    if (postPicInput.files[0]) {
+        console.log('file selected');
+    } else {
+        console.log('no file selected');
+    }
+});
+
+
+
 ////////////////////////////////////////////////////////////
 // CODE TO GET CURRENT USER'S POSTS AND THEN DISPLAY THEM.
 
@@ -149,7 +319,7 @@ function getPostForCurrentUserOnly ()
     });
  };
 
-getPostForCurrentUserOnly();
+// getPostForCurrentUserOnly();
 
 
 

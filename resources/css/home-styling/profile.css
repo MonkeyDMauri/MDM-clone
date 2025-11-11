@@ -393,6 +393,39 @@ EDIT PROFILE POPUP STYLING
     height: 80px;
 }
 
+.upload-pic-img {
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.current-selected-pic-container {
+    position:relative;
+}
+
+.preview-image-post {
+    max-width: 260px;
+    max-height: 260px
+}
+
+.remove-post-pic-btn {
+    display: none;
+}
+
+.remove-post-pic-btn.show {
+    display: flex;
+    position: absolute;
+    top: 0;
+
+    cursor: pointer;
+
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: .1rem .5rem;
+    border-radius: 50%;
+}
 /*POST SECTION STYLING*/
 .posts-section {
     border-top: solid 1px white;
@@ -402,7 +435,7 @@ EDIT PROFILE POPUP STYLING
     flex-direction: column;
 }
 
-.post-card {
+.post-container {
     padding: 1rem;
     border: solid 1px white;
 }
