@@ -16,9 +16,13 @@ body {
 /* NAVIGATION BAR STYLING*/
 
 .elden-ring-logo {
-    width: 150px;
-    height: 100px;
+    width: 120px;
+    height: 70px;
     border-radius: 1rem;
+}
+
+.logo-img-home-layout {
+    height: 60px;
 }
 
 .nav-bar {
@@ -32,6 +36,13 @@ body {
 .nav-section-1 {
     display: flex;
     gap: 1rem;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .nav-options {

@@ -14,13 +14,19 @@
         <nav class="nav-bar">
 
             <div class="nav-section-1">
-                <img src="{{ asset('images/default-images/elden_ring_logo2.png')}}" alt="elden ring logo"
-                class="elden-ring-logo">
-                <div class="nav-name-email">
-                    <h1 class="nav-name">{{auth()->user()->name}}</h1>
-                    {{-- <br> --}}
-                    <p class="nav-email">{{auth()->user()->email}}</p>
+                
+                <div class="logo-container">
+                    <img src="{{ asset('storage/website_logo_images/Nicsocial logo - White.png') }}" alt="nicsocial logo"
+                    class="logo-img-home-layout">
+
+                    {{-- <img src="{{ asset('images/default-images/elden_ring_logo2.png')}}" alt="elden ring logo"
+                    class="elden-ring-logo"> --}}
                 </div>
+
+                {{-- <div class="nav-name-email">
+                    <h1 class="nav-name">{{auth()->user()->name}}</h1>
+                    <p class="nav-email">{{auth()->user()->email}}</p>
+                </div> --}}
             </div>
             
 
