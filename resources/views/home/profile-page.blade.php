@@ -71,9 +71,10 @@
                 @enderror
             </div>
 
-            {{-- POST SECTION --}}
+            {{-- POSTs SECTION (where all posts will be displayed one by one)--}}
             <section class="posts-section">
                 @foreach ( $posts as $post)
+
                     <div class="post-container">
                         <input type="hidden" class="post-id" value="{{ $post->id }}">
                         <div class="" style="display: flex; gap: .5rem; align-items: center;">
@@ -85,6 +86,10 @@
                         <p class="post-title">{{ $post->title }}</p>
 
                         <p class="post-description">{{ $post->description}}</p>
+
+                        @if ($post->image)
+                            <img src="{{ asset('storage/images/post_images/' . $post->image) }}" alt="post image">
+                        @endif
 
                         <div class="post-footer">
                             <div class="post-action-buttons" style="display: flex; gap: .5rem;">
