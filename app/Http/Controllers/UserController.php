@@ -19,9 +19,9 @@ class UserController extends Controller
 
         // validation rules.
         $input = $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|unique:users,name',
             'gender' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:4'
         ]);
 

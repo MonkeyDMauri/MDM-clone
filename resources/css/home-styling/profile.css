@@ -71,6 +71,14 @@
     position: relative;
 }
 
+.preview-profile-pic {
+    max-height: 250px;
+    max-width: 250px;
+    border-radius: 50%;
+    padding: 1rem 0;
+}
+
+
 .change-pic-error-wrapper { /* This block here is for the popup inside the "change profile picture popup"*/
     background-color: rgb(0, 0, 0, 0.6);
     width: 100%;
@@ -426,7 +434,10 @@ EDIT PROFILE POPUP STYLING
     padding: .1rem .5rem;
     border-radius: 50%;
 }
-/*POST SECTION STYLING*/
+
+/* ///////////////////
+POST SECTION STYLING
+*/
 .posts-section {
     border-top: solid 1px white;
     padding: 0 12rem;
@@ -463,6 +474,14 @@ EDIT PROFILE POPUP STYLING
 
 .post-description {
     padding: 1rem;
+}
+
+.post-image {
+    max-height: 300px;
+    max-width: 300px;
+
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
 }
 
 .like-btn-img, .dislike-btn-img, .share-btn-img {

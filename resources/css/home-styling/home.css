@@ -40,7 +40,7 @@ body {
 }
 
 .nav-bar-icon {
-    height: 50px;
+    height: 60px;
 }
 
 .logo-container {
@@ -51,7 +51,7 @@ body {
 
 .nav-options {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     list-style: none;
 }
 

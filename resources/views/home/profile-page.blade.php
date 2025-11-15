@@ -88,7 +88,7 @@
                         <p class="post-description">{{ $post->description}}</p>
 
                         @if ($post->image)
-                            <img src="{{ asset('storage/images/post_images/' . $post->image) }}" alt="post image">
+                            <img src="{{ asset('storage/images/post_images/' . $post->image) }}" alt="post image" class="post-image">
                         @endif
 
                         <div class="post-footer">
@@ -169,7 +169,7 @@
     {{-- Popup for then user wants to change profile picture --}}
     <div class="change-profile-pic-popup-wrapper">
         <div class="change-profile-pic-popup-wrap">
-            <h1>Edit profile picture</h1>
+            <h1 style="color:rgb(33, 94, 228)">Edit profile picture</h1>
             
             <form action="{{ route('change.profile.pic') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -177,6 +177,9 @@
                     <label>Upload picture here</label>
                     <br>
                     <input type="file" name="new-pic" id="new-profile-pic" class="new-pic">
+                </div>
+                <div class="new-profile-pic-preview-container">
+                    <img src="" class="preview-profile-pic">
                 </div>
                 <button type="submit">Update</button>
                 <button class="change-pic-cancel-btn" type="button">cancel</button>
@@ -201,7 +204,7 @@
     {{-- Popup to update info profile --}}
     <div class="edit-profile-popup-wrapper">
         <div class="edit-profile-popup-wrap">
-            <h1>Edit profile</h1>
+            <h1 style="color:rgb(33, 94, 228)">Edit profile</h1>
             <form action="{{ route('profile.edit') }}" method="POST">
                 @csrf
                 <div class="edit-profile-form-wrapper">

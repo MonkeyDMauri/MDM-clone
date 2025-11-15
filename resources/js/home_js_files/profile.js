@@ -28,7 +28,10 @@ function toggleErrorPopupInChangeProfileElement() {
     popup.classList.toggle('show');
 }
 
+// Input element use to select new profile pic.
 const inputToUploadNewProfilePic = _('.new-pic');
+// <img> to show a preview of profile pic.
+const profilePicPreview = document.querySelector('.preview-profile-pic');
 
 inputToUploadNewProfilePic.addEventListener('change', function (e) {
     // grabbing file(s)/image uploaded.
@@ -42,7 +45,7 @@ inputToUploadNewProfilePic.addEventListener('change', function (e) {
         console.log('FILE!!')
     }
 
-    // this piece of code checks if the selected file is an image by making use of
+    // This piece of code checks if the selected file is an image by making use of
     // the JS startsWith method to check the file type.
     if (!file.type.startsWith('image/')) {
         console.log('Not an image');
@@ -50,6 +53,12 @@ inputToUploadNewProfilePic.addEventListener('change', function (e) {
         toggleErrorPopupInChangeProfileElement(); // This is the funcion that makes the pop up saying "please upload an image" show up
         return;
     }
+
+    // Creating local URL for this image to then temporarily display it as a preview.
+    const fileURL = URL.createObjectURL(file);
+
+    // Showing preview of new profile pic.
+    profilePicPreview.src = fileURL;
 });
 
 // This is the "ok" button inside the popup error that shows up when the user uploads a file that is not an image when they trt
