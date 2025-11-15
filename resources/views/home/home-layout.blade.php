@@ -31,11 +31,27 @@
             
 
             <ul class="nav-options">
-                <li><a href="{{route('home.section')}}">Home</a></li>
-                <li><a href="{{route('people.section')}}">People</a></li>
-                <li><a href="{{route('profile.section')}}">Profile</a></li>
-                <li><a href="#settings">Settings</a></li>
-                <li class="logout-btn" style="cursor: pointer;">Logout</li>
+                <li><a href="{{route('home.section')}}">
+                    <img src="{{ asset('storage/website_images/home1.png') }}" alt="home image" class="nav-bar-icon"></a>
+                </li>
+                <li>
+                    <a href="{{route('people.section')}}">
+                        <img src="{{ asset('storage/website_images/people.png') }}" alt="profile image" class="nav-bar-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('profile.section')}}">
+                        <img src="{{ asset('storage/website_images/user.png') }}" alt="profile image" class="nav-bar-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="#settings">
+                        <img src="{{ asset('storage/website_images/setting.png') }}" alt="profile image" class="nav-bar-icon">
+                    </a>
+                </li>
+                <li class="logout-btn" style="cursor: pointer;">
+                    <img src="{{ asset('storage/website_images/logout.png') }}" alt="profile image" class="nav-bar-icon">
+                </li>
             </ul>
         </nav>
 
